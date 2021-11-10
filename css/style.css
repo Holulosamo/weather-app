@@ -1,0 +1,37 @@
+:root{
+    --bg-color: #1E213A;
+    --bg-color-2: #100E1D;
+    --letter-color: #E7E7EB;
+    --letter-color-2: #88869D;
+    --btn-color: #6E707A;
+    --progress-bar-color: #FFEC65;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+.aside{
+    background: var(--bg-color);
+    height: 810px;
+}
+
+.aside__btn{
+    background-color: var(--btn-color);
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.article{
+    background-color: var(--bg-color-2);
+    height: 1200px;
+}
