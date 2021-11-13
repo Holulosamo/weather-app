@@ -16,22 +16,68 @@
 body{
     margin: 0;
     font-family: 'Raleway', sans-serif;
+    min-height: 100vh;
+}
+
+.main-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .aside{
+    display: grid;
+    grid-template-rows: 100px 1fr;
     background: var(--bg-color);
-    height: 810px;
+    width: 100%;
+    min-height: 88vh;
 }
 
-.aside__btn{
-    background-color: var(--btn-color);
+.aside__container{
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.aside__container-btn{
+    width: 161px;
+    height: 40px;
+    margin-left: 15px;
     border: none;
     font-family: inherit;
     font-size: 1rem;
     font-weight: 500;
+    color: var(--letter-color);
+    background-color: var(--btn-color);
+    cursor: pointer;
+}
+
+.aside__container-location{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: var(--btn-color);
+    color: var(--letter-color);
+    cursor: pointer;
+}
+
+.aside__container-icon{
+    margin-top: .3em;
+}
+
+.aside__form{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: inherit;
+    background-color: var(--bg-color);
 }
 
 .article{
     background-color: var(--bg-color-2);
-    height: 1200px;
+    width: 100%;
+    min-height: 100vh;
 }
