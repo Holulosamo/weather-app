@@ -4,6 +4,7 @@
     --letter-color: #E7E7EB;
     --letter-color-2: #88869D;
     --btn-color: #6E707A;
+    --btn-search-color: #3C47E9;
     --progress-bar-color: #FFEC65;
 }
 
@@ -74,6 +75,42 @@ body{
     width: 100%;
     min-height: inherit;
     background-color: var(--bg-color);
+}
+
+.aside__form-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--letter-color);
+    cursor: pointer;
+}
+
+.aside__form-search{
+    width: 250px;
+    height: 45px;
+    margin-top: 60px;
+    margin-left: 15px;
+    border: thin solid var(--letter-color);
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--letter-color);
+    background: var(--bg-color);
+}
+
+.aside__form-submit{
+    width: 90px;
+    height: 45px;
+    margin-left: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--letter-color);
+    cursor: pointer;
+    background-color: var(--btn-search-color);
+    border: none;
+}
+
+.aside__form-search:focus{
+    outline: none;
 }
 
 .article{
