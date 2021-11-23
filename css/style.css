@@ -20,6 +20,10 @@ body{
     min-height: 100vh;
 }
 
+img{
+    max-width: 100%;
+}
+
 .main-content{
     position: relative;
     display: flex;
@@ -68,12 +72,18 @@ body{
     margin-top: .3em;
 }
 
+.aside__weather-image{
+    width: 150px;
+}
+
 .aside__form{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    transform: translateX(-100%);
     min-height: inherit;
+    text-align: center;
     background-color: var(--bg-color);
 }
 
@@ -86,15 +96,19 @@ body{
 }
 
 .aside__form-search{
-    width: 250px;
+    width: 60%;
     height: 45px;
+    padding-left: 40px;
     margin-top: 60px;
-    margin-left: 15px;
+    max-width: 425px;
     border: thin solid var(--letter-color);
     font-family: inherit;
     font-size: 1rem;
     color: var(--letter-color);
-    background: var(--bg-color);
+    background-color: var(--bg-color);
+    background-image: url(../assets/search_black_24dp.svg);
+    background-position: 10px center;
+    background-repeat: no-repeat;
 }
 
 .aside__form-submit{
