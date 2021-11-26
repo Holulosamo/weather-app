@@ -76,6 +76,14 @@ img{
     width: 150px;
 }
 
+.aside__weather-error{
+    color: #ff2130;
+}
+
+.aside__weather-container{
+    display: flex;
+}
+
 .aside__form{
     position: absolute;
     top: 0;
@@ -131,4 +139,13 @@ img{
     background-color: var(--bg-color-2);
     width: 100%;
     min-height: 100vh;
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }
