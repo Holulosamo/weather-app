@@ -5,8 +5,13 @@ const d = document,
 
 let query;
 const API_LINK = "https://api.openweathermap.org/",
-  DEFAULT_CURRENT_WEATHER = `${API_LINK}data/2.5/weather?q=London&appid=47215c95b17bd7ea41ea062f704ea884`,
-  DEFAULT_FORECAST = `${API_LINK}data/2.5/forecast?q=London&appid=47215c95b17bd7ea41ea062f704ea884`;
+  DEFAULT_CURRENT_WEATHER = `${API_LINK}data/2.5/weather?q=Tokyo&appid=47215c95b17bd7ea41ea062f704ea884`,
+  DEFAULT_FORECAST = `${API_LINK}data/2.5/forecast?q=Tokyo&appid=47215c95b17bd7ea41ea062f704ea884`;
+
+const getDays = (day) => {
+  const daysOfWeek = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  return currentDay = daysOfWeek[day.getDay()];
+}
 
 async function getWeather(currentWeatherURL, forecastURL) {
   try {
@@ -19,14 +24,16 @@ async function getWeather(currentWeatherURL, forecastURL) {
         [currWeatherRes, forecastRes] = await Promise.all([currWeatherFetch, forecastFetch]),
         currWeatherJson = await currWeatherRes.json(),
         forecastJson = await forecastRes.json();
-        
-    console.log(currWeatherJson);
 
-    const forecastFormatted = forecastJson.list.filter(forecast => forecast.dt_txt.includes("18:00:00"));
+        const forecastFormatted = forecastJson.list.filter(forecast => forecast.dt_txt.includes("00:00:00"));
+        const currentDate = new Date(currWeatherJson.dt * 1000);
+        const currentDay = getDays(currentDate);
 
-    console.log(forecastFormatted)
+    console.log(currWeatherJson, forecastFormatted, currentDate.toUTCString(), currentDay);
     
-    
+    weatherContainer.innerHTML = `
+      
+    `
   } catch (err) {
     const error = err.statusText || "An error occurred while loading the data";
     weatherContainer.innerHTML = `<p class="aside__weather-error">Error: ${err.status}, ${error}<p>`;
