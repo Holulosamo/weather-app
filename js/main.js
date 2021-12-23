@@ -1,7 +1,11 @@
 const d = document,
   locationBtn = d.querySelector(".aside__container-location"),
   weatherContainer = d.querySelector(".aside__weather"),
-  weatherGrid = d.querySelector(".article");
+  template = d.getElementById('weather-template').content,
+  fragment = d.createDocumentFragment(),
+  weatherGrid = d.querySelector(".section");
+
+console.log(template)
 
 let query;
 const API_LINK = "https://api.openweathermap.org/",
@@ -18,6 +22,17 @@ const getMonth = (month) => {
   return currentMonth = months[month.getMonth()];
 }
 
+const insertHTML = (response, day, date, month) => {
+  template.querySelector(".aside__weather-img").src = `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`;
+  template.querySelector(".aside__weather-img").alt = response.weather[0].description; 
+  template.querySelector(".aside__weather-temp").innerHTML = `${Math.round(response.main.temp)}<span class="aside__weather-metric">ºC</span>`;
+  template.querySelector(".aside__weather-main").innerHTML = response.weather[0].main;
+  template.querySelector(".aside__weather-date").innerHTML = `<span>Today</span><span>•</span><span>${day}, ${date.getDate()} ${month}</span>`; 
+  template.querySelector(".aside__weather-location").innerHTML = `<span class="material-icons">location_on</span> ${response.name}`;
+
+  return clone = d.importNode(template, true);
+}
+
 async function getWeather(currentWeatherURL, forecastURL) {
     const loaderSpinner = d.createElement("div");
     loaderSpinner.setAttribute('style', 'border: 4px solid rgba(0, 0, 0, .2); width: 60px; height: 60px; border-radius: 50%; border-left-color: #fff; animation: spin 1s linear infinite');
@@ -32,27 +47,32 @@ async function getWeather(currentWeatherURL, forecastURL) {
         
         const forecastFormatted = forecastJson.list.filter(forecast => forecast.dt_txt.includes("00:00:00")),
         currentDate = new Date(currWeatherJson.dt * 1000),
-        nextDaysDate = forecastFormatted.map(date => new Date(date.dt_txt)),
+        dateTimes = forecastFormatted.map(date => new Date(date.dt_txt)),
         currentDay = getDays(currentDate),
-        currentMonth = getMonth(currentDate);
+        currentMonth = getMonth(currentDate),
+        gridForecast = d.createElement('article');
         
         console.log(currWeatherJson, forecastFormatted);
         
-        weatherContainer.removeChild(loaderSpinner);
-        weatherContainer.innerHTML += `
-        <div class="aside__weather-container-img">
-        <img src="http://openweathermap.org/img/wn/${currWeatherJson.weather[0].icon}@2x.png" class="aside__weather-img"/>
-        </div>
-        <h2 class="aside__weather-temp">${Math.round(currWeatherJson.main.temp)}<span class="aside__weather-metric">ºC</span></h2>
-        <h3 class="aside__weather-main">${currWeatherJson.weather[0].main}</h3>
-        <p class="aside__weather-date"><span>Today</span><span>•</span><span>${currentDay}, ${currentDate.getDate()} ${currentMonth}</span></p>
-        <div class="aside__weather-location"><span class="material-icons">location_on</span> ${currWeatherJson.name}</div>
-        `;
+        const htmlTemplate = insertHTML(currWeatherJson, currentDay, currentDate, currentMonth);
+        fragment.appendChild(htmlTemplate);
+
+        weatherContainer.innerHTML = "";
+        weatherContainer.appendChild(fragment);
+
         
+        
+        // forecastFormatted.forEach((el, index) => {
+        //   weatherGrid.innerHTML = `
+        //     <div class="gridForecast">
+        //       <h3>${index === 0 ? 'Tomorrow' : ""}</h3>
+        //     </div>
+        //   `
+        // })  
+
       } catch (err) {
         const error = err.statusText || "An error occurred while loading the data";
-        weatherContainer.removeChild(loaderSpinner);
-        weatherContainer.innerHTML += `<p class="aside__weather-error">Error: ${err.status}, ${error}<p>`;
+        weatherContainer.innerHTML = `<p class="aside__weather-error">Error: ${err.status}, ${error}<p>`;
     }
 }
 

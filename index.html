@@ -19,16 +19,37 @@
                 <button class="aside__container-btn">Search for places</button>
                 <div class="aside__container-location"><span class="aside__container-icon  material-icons">my_location</span></div>
             </article>
-            <article class="aside__weather">
-                <div class="aside__weather-background"></div>
-            </article>
+            <section class="aside__weather">
+            </section>
             <form class="aside__form">
                 <span class="aside__form-close  material-icons">close</span>
                 <input type="search" class="aside__form-search" placeholder="search location">
                 <input type="submit" value="Search" class="aside__form-submit">
             </form>
         </aside>
-        <article class="article"></article>
+        <section class="section"></section>
     </main>
+
+    <template id="weather-template">
+        <div class="aside__weather-background"></div>
+        <article class="aside__weather-article">
+            <img src="" class="aside__weather-img" alt=""/>
+            <h2 class="aside__weather-temp"><span class="aside__weather-metric">ºC</span></h2>
+            <h3 class="aside__weather-main"></h3>
+            <p class="aside__weather-date"></p>
+            <div class="aside__weather-location"><span class="material-icons">location_on</span></div>
+        </article>
+
+        <!-- <article class="weather-template__card">
+            <h3></h3>
+            <img src="" alt="">
+            <span></span>
+            <span></span>
+        </article>
+
+        <article class="weather-template__highlights">
+            <h1>Today's </h1>
+        </article> -->
+    </template>
 </body>
 </html>

@@ -3,6 +3,7 @@
     --bg-color-2: #100E1D;
     --letter-color: #E7E7EB;
     --letter-color-2: #88869D;
+    --letter-color-3: #A09FB1;
     --btn-color: #6E707A;
     --btn-search-color: #3C47E9;
     --progress-bar-color: #FFEC65;
@@ -77,6 +78,13 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--letter-color-3);
+}
+
+.aside__weather-article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .aside__weather-background{
@@ -93,7 +101,7 @@ img{
     width: 180px;
 }
 
-.aside__weather-container-img{
+.aside__weather-img{
     margin-top: 50px;
 }
 
@@ -108,6 +116,34 @@ img{
 
 .aside__weather-container{
     display: flex;
+}
+
+.aside__weather-temp{
+    margin: 0;
+    font-size: 8rem;
+    font-weight: 500;
+    color: var(--letter-color);
+}
+
+.aside__weather-metric{
+    font-size: 3rem;
+}
+
+.aside__weather-main{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.aside__weather-date{
+    width: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.aside__weather-location{
+    margin-top: 2em;
+    font-weight: 600;
 }
 
 .aside__form{
@@ -161,7 +197,7 @@ img{
     outline: none;
 }
 
-.article{
+.section{
     background-color: var(--bg-color-2);
     width: 100%;
     min-height: 100vh;
