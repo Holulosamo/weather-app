@@ -45,7 +45,7 @@ img{
     align-self: center;
 }
 
-.aside__container-btn{
+.aside__container--btn{
     width: 161px;
     height: 40px;
     margin-left: 15px;
@@ -58,7 +58,7 @@ img{
     cursor: pointer;
 }
 
-.aside__container-location{
+.aside__container--location, .hightlights__location{
     width: 40px;
     height: 40px;
     margin-right: 10px;
@@ -69,7 +69,7 @@ img{
     cursor: pointer;
 }
 
-.aside__container-icon{
+.aside__container-icon, .hightlights__icon{
     margin-top: .3em;
 }
 
@@ -201,6 +201,35 @@ img{
     background-color: var(--bg-color-2);
     width: 100%;
     min-height: 100vh;
+}
+
+.section__forecast{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(140px, min-content));
+    gap: 2em;
+    padding-top: 5em;
+}
+
+.section__forecast-cards{
+    text-align: center;
+    background-color: var(--bg-color);
+    color: #fff;
+}
+
+.section__forecast-day{
+    font-weight: 500;
+}
+
+.section__forecast-measurement{
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.section__forecast-measurement span:last-child{
+    color: var(--letter-color-3);
 }
 
 @keyframes spin{
