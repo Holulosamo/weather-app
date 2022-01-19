@@ -206,9 +206,10 @@ img{
 .section__forecast{
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(140px, min-content));
+    grid-template-columns: repeat(auto-fit, 140px);
     gap: 2em;
     padding-top: 5em;
+    padding-bottom: 5em;
 }
 
 .section__forecast-cards{
@@ -231,6 +232,61 @@ img{
 .section__forecast-measurement span:last-child{
     color: var(--letter-color-3);
 }
+
+.section__hightlights{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 320px);
+    gap: 3em;
+    justify-content: center;
+    color: #fff;
+}
+
+.section__hightlights h2{
+    grid-column: 1/-1;
+    font-size: 1.5rem;
+}
+
+.section__hightlights h3{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.hightlights__wind-speed{
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.hightlights__wind-speed span{
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+
+.hightlights__cards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-color);
+    font-weight: 500;
+}
+
+.hightlights__icon-container{
+    display: flex;
+    justify-items: space-around;
+    align-items: center;
+}
+
+.hightlights__location{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: var(--btn-color);
+    color: var(--letter-color);
+    cursor: pointer;
+}
+
 
 @keyframes spin{
     0%{
