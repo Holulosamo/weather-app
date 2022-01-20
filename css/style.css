@@ -252,7 +252,8 @@ img{
 }
 
 .hightlights__wind-speed{
-    font-size: 3.2rem;
+    margin: .2em 0;
+    font-size: 4rem;
     font-weight: 700;
 }
 
@@ -268,6 +269,8 @@ img{
     align-items: center;
     background-color: var(--bg-color);
     font-weight: 500;
+    padding-top: .5em;
+    padding-bottom: 2em;
 }
 
 .hightlights__icon-container{
@@ -288,13 +291,47 @@ img{
 }
 
 
-@keyframes spin{
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
+.hightlights__humidity-info{
+    padding: 0;
+    margin: 0;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.hightlights__humidity-info span{
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.hightlights__humidity-container{
+    display: flex;
+    flex-direction: column;
+    width: 229px;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: var(--letter-color-3);
+    font-weight: 700;
+}
+
+.hightlights__humidity-percentages{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hightlights__humidity-bar{
+    height: 8px;
+    border-radius: 5em;
+    background-color: var(--letter-color);
+}
+
+.hightlights__humidity-progression{
+    height: inherit;
+    border-radius: inherit;
+    background-color: #FFEC65;
+}
+
+.hightlights__percentage{
+    align-self: flex-end;
 }
 
 @media screen and (min-width: 768px) {
