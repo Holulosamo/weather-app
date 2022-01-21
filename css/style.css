@@ -150,14 +150,18 @@ img{
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: inherit;
     transform: translateX(-100%);
     min-height: inherit;
     text-align: center;
     background-color: var(--bg-color);
 }
 
-.aside__form-close{
+.aside__form-open{
+    transform: translateX(0);
+}
+
+.aside__form-close--btn{
     position: absolute;
     top: 10px;
     right: 10px;
@@ -201,6 +205,8 @@ img{
     background-color: var(--bg-color-2);
     width: 100%;
     min-height: 100vh;
+    padding-top: 5em;
+    padding-bottom: 10em;
 }
 
 .section__forecast{
@@ -208,7 +214,6 @@ img{
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 140px);
     gap: 2em;
-    padding-top: 5em;
     padding-bottom: 5em;
 }
 
@@ -251,18 +256,6 @@ img{
     font-weight: 500;
 }
 
-.hightlights__wind-speed{
-    margin: .2em 0;
-    font-size: 4rem;
-    font-weight: 700;
-}
-
-.hightlights__wind-speed span{
-    font-size: 2.5rem;
-    font-weight: 500;
-}
-
-
 .hightlights__cards{
     display: flex;
     flex-direction: column;
@@ -288,19 +281,6 @@ img{
     background-color: var(--btn-color);
     color: var(--letter-color);
     cursor: pointer;
-}
-
-
-.hightlights__humidity-info{
-    padding: 0;
-    margin: 0;
-    font-size: 4rem;
-    font-weight: 700;
-}
-
-.hightlights__humidity-info span{
-    font-size: 2.5rem;
-    font-weight: 500;
 }
 
 .hightlights__humidity-container{
@@ -334,14 +314,63 @@ img{
     align-self: flex-end;
 }
 
+.hightlights__visibility, .hightlights__pressure{
+    justify-content: center;
+}
+
+.info{
+    padding: 0;
+    margin: 0;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.span{
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
 @media screen and (min-width: 768px) {
     .aside__weather-background{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: url(../assets/weather-app-master/Cloud-background.png) no-repeat;
-    background-size: cover;
-    background-position: top, center;
-    filter: opacity(0.2);
+        background-size: cover;
+        background-position: top, center;
+    }
 }
+
+@media screen and (min-width: 1440px){  
+    .main-content{
+        flex-direction: row;
+    }
+
+    .aside{
+        width: 420px;
+        min-height: 100%;
+    }
+
+    .aside__form{
+        width: 420px;
+    }
+
+    .aside__weather-background{
+        background-size: 170%;
+    }
+
+    .section{
+        display: flex;
+        justify-content: center;
+    }
+
+    .section__container{
+        width: 80%;
+        margin-left: auto;
+        margin-right: 3.5em;
+    }
+
+    .section__forecast, .section__hightlights{
+        justify-content: start;
+    }
+
+    .section__hightlights{
+        grid-template-columns: repeat(auto-fill, 390px);
+    }
 }

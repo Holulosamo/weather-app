@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="icon" type="image/png" href="assets/weather-app-master/devchallenges.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700&display=swap" rel="stylesheet">
@@ -23,12 +24,14 @@
             <section class="aside__weather">
             </section>
             <form class="aside__form">
-                <span class="aside__form-close  material-icons">close</span>
-                <input type="search" class="aside__form-search" placeholder="search location">
+                <span class="aside__form-close--btn  material-icons">close</span>
+                <input type="search" class="aside__form-search" required placeholder="search location">
                 <input type="submit" value="Search" class="aside__form-submit">
             </form>
         </aside>
-        <section class="section"></section>
+        <section class="section">
+            <div class="section__container"></div>
+        </section>
     </main>
 
     <template id="weather-template">
