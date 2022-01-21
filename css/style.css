@@ -79,6 +79,7 @@ img{
     flex-direction: column;
     align-items: center;
     color: var(--letter-color-3);
+    padding-bottom: 4em;
 }
 
 .aside__weather-article{
