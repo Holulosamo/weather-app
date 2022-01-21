@@ -12,6 +12,28 @@ const API_LINK = 'https://api.openweathermap.org/';
 const DEFAULT_CURRENT_WEATHER = `${API_LINK}data/2.5/weather?q=London&units=metric&appid=47215c95b17bd7ea41ea062f704ea884`;
 const DEFAULT_FORECAST = `${API_LINK}data/2.5/forecast?q=London&units=metric&appid=47215c95b17bd7ea41ea062f704ea884`;
 
+async function getWeather(currentWeatherURL, forecastURL) {
+  createLoader();
+  try {
+    let currWeatherFetch = await fetch(currentWeatherURL);
+    let forecastFetch = await fetch(forecastURL);
+    let [currWeatherRes, forecastRes] = await Promise.all([
+      currWeatherFetch,
+      forecastFetch,
+    ]);
+    let currWeatherJson = await currWeatherRes.json();
+    let forecastJson = await forecastRes.json();
+    const forecastFormatted = forecastJson.list.filter((forecast) =>
+      forecast.dt_txt.includes("00:00:00")
+    );
+    const currentDate = new Date(currWeatherJson.dt * 1000);
+    weatherTemplate(currWeatherJson, currentDate);
+    forecastTemplate(forecastFormatted, currWeatherJson);
+  } catch (err) {
+    const error = err.statusText || "An error occurred while loading the data";
+    weatherContainer.innerHTML = `<p class='aside__weather-error'>Error: ${err.status}, ${error}<p>`;
+  }
+}
 
 const createLoader = () => {
   const loaderSpinner = d.createElement('div');
@@ -127,25 +149,6 @@ const forecastTemplate = (forecast, currentWeather) => {
   const humidityPercent = currentWeather.main.humidity;
   const barProgress = (parentWidth * humidityPercent) / 100;
   document.querySelector('.hightlights__humidity-progression').style.width = `${barProgress}px`;
-}
-
-
-async function getWeather(currentWeatherURL, forecastURL) {
-    createLoader();
-    try {    
-      let currWeatherFetch = await fetch(currentWeatherURL);
-      let forecastFetch = await fetch(forecastURL);
-      let [currWeatherRes, forecastRes] = await Promise.all([currWeatherFetch, forecastFetch]);
-      let currWeatherJson = await currWeatherRes.json();
-      let forecastJson = await forecastRes.json();       
-      const forecastFormatted = forecastJson.list.filter(forecast => forecast.dt_txt.includes('00:00:00'));
-      const currentDate = new Date(currWeatherJson.dt * 1000);
-      weatherTemplate(currWeatherJson, currentDate);
-      forecastTemplate(forecastFormatted, currWeatherJson);     
-    } catch (err) {
-        const error = err.statusText || 'An error occurred while loading the data';
-        weatherContainer.innerHTML = `<p class='aside__weather-error'>Error: ${err.status}, ${error}<p>`;
-    }
 }
 
 d.addEventListener('DOMContentLoaded', getWeather(DEFAULT_CURRENT_WEATHER, DEFAULT_FORECAST));
