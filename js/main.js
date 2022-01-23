@@ -21,9 +21,7 @@ async function getWeather(currentWeatherURL, forecastURL) {
     ]);
     let currWeatherJson = await currWeatherRes.json();
     let forecastJson = await forecastRes.json();
-    const forecastFormatted = forecastJson.list.filter((forecast) =>
-      forecast.dt_txt.includes("00:00:00")
-    );
+    const forecastFormatted = forecastJson.list.filter(forecast => forecast.dt_txt.includes("00:00:00"));
     const currentDate = new Date(currWeatherJson.dt * 1000);
     weatherTemplate(currWeatherJson, currentDate);
     forecastTemplate(forecastFormatted, currWeatherJson);
@@ -170,9 +168,7 @@ const success = (pos) => {
   getWeather(WEATHER_COORDS, FORECAST_COORDS);
 };
 
-const error = (err) => {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
+const error = (err) => console.warn(`ERROR(${err.code}): ${err.message}`)
 
 const getGeolocation = () => {
    const geolocation = navigator.geolocation;
