@@ -9,8 +9,6 @@ const openFormBtn = document.querySelector('.aside__container--btn');
 const closeFormBtn = document.querySelector('.aside__form-close--btn');
 const searchForm = document.querySelector('.aside__form');
 const API_LINK = 'https://api.openweathermap.org/';
-const DEFAULT_CURRENT_WEATHER = `${API_LINK}data/2.5/weather?q=London&units=metric&appid=47215c95b17bd7ea41ea062f704ea884`;
-const DEFAULT_FORECAST = `${API_LINK}data/2.5/forecast?q=London&units=metric&appid=47215c95b17bd7ea41ea062f704ea884`;
 
 async function getWeather(currentWeatherURL, forecastURL) {
   createLoader();
@@ -151,8 +149,6 @@ const forecastTemplate = (forecast, currentWeather) => {
   document.querySelector('.hightlights__humidity-progression').style.width = `${barProgress}px`;
 }
 
-d.addEventListener('DOMContentLoaded', getWeather(DEFAULT_CURRENT_WEATHER, DEFAULT_FORECAST));
-
 openFormBtn.addEventListener('click', () => searchForm.classList.add('aside__form-open'));
 closeFormBtn.addEventListener('click', () => searchForm.classList.remove('aside__form-open'));
 
@@ -178,13 +174,17 @@ const error = (err) => {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
-getLocationBtn.addEventListener('click', (e) => {
-  const geolocation = navigator.geolocation;
-  const options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  }
-  geolocation.getCurrentPosition(success, error, options);
-});
+const getGeolocation = () => {
+   const geolocation = navigator.geolocation;
+   const options = {
+     enableHighAccuracy: true,
+     timeout: 5000,
+     maximumAge: 0,
+   };
+   geolocation.getCurrentPosition(success, error, options);
+}
+
+d.addEventListener("DOMContentLoaded", getGeolocation);
+
+getLocationBtn.addEventListener('click', getGeolocation);
 
