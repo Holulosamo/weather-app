@@ -183,4 +183,3 @@ const getGeolocation = () => {
 d.addEventListener("DOMContentLoaded", getGeolocation);
 
 getLocationBtn.addEventListener('click', getGeolocation);
-
