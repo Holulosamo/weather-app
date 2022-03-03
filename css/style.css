@@ -364,11 +364,7 @@ img{
     .section__container{
         width: 80%;
         margin-left: auto;
-        margin-right: 3.5em;
-    }
-
-    .section__forecast, .section__hightlights{
-
+        margin-right: auto;
     }
 
     .section__hightlights{
